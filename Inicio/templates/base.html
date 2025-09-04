@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}PONCHO CAFE{% endblock %}</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand fw-bold d-flex align-items-center" href="/">
+        <img src="{% static 'img/1.png' %}" alt="Logo PonchoCafe" style="height:40px;" class="me-2">
+        PONCHO CAFE
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+              aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link" href="/">Inicio</a>
+          <a class="nav-link" href="/about">Acerca de</a>
+          <a class="nav-link" href="/polityka-prywatnosci">Política de Privacidad</a>
+          <a class="nav-link" href="/menu">Menú</a>
+          <a class="nav-link" href="/kontakt">Kontakt</a>
+          <a class="nav-link" href="/rezerwacje">Rezerwacje</a>
+          <a class="nav-link" href="/o-klubie">O-klubie</a>
+          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contenido dinámico -->
+  <main class="container mt-4">
+    {% block content %}
+    {% endblock %}
+  </main>
+
+  <!-- Footer con redes sociales -->
+  <footer class="text-light py-4 mt-5" style="background-color: transparent;">
+    <div class="container text-center">
+      <p class="mb-2">Obserwuj nas w mediach społecznościowych</p>
+      <a href="https://www.facebook.com/people/PonchoCaf%C3%A9-Latino-Bar/61578047500936/" class="text-light me-3" target="_blank">
+        <i class="fab fa-facebook fa-2x"></i>
+      </a>
+      <a href="https://www.instagram.com/ponchocafe_bar" class="text-light me-3" target="_blank">
+        <i class="fab fa-instagram fa-2x"></i>
+      </a>
+      <!--<a href="#" class="text-light me-3" target="_blank">
+        <i class="fab fa-whatsapp fa-2x"></i>
+      </a>
+      <a href="#" class="text-light" target="_blank">
+        <i class="fab fa-twitter fa-2x"></i>
+      </a>-->
+    </div>
+  </footer>
+
+ {% block footer %}{% endblock %} 
+ {% block extra_scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Reserva – PONCHO CAFE{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <h2 class="mb-4 text-center">Reserva tu espacio</h2>
+
+  <form action="" method="POST">
+    {% csrf_token %}
+
+    <!-- Fecha -->
+    <div class="mb-3">
+      <label for="fecha" class="form-label">Fecha de la reserva</label>
+      <input type="date" class="form-control" id="fecha" name="fecha" required min="{{ hoy }}">
+    </div>
+
+    <!-- Dropdown -->
+    <div class="mb-3">
+      <label for="opcion" class="form-label">Selecciona una opción</label>
+      <select class="form-select" id="opcion" name="opcion" required>
+        <option value="" selected disabled>-- Elige una opción --</option>
+        <option value="1persona">1 persona</option>
+        <option value="2personas">2 personas</option>
+        <option value="mesa-familiar">Mesa familiar</option>
+        <option value="evento">Evento privado</option>
+      </select>
+    </div>
+
+    <!-- Comentarios -->
+    <div class="mb-3">
+      <label for="comentarios" class="form-label">Comentarios</label>
+      <textarea class="form-control" id="comentarios" name="comentarios" rows="4" placeholder="¿Alguna petición especial?"></textarea>
+    </div>
+
+    <!-- Botón -->
+    <button type="submit" class="btn btn-primary">Reservar</button>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}Contacto – PONCHOCAFE{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <h2 class="mb-4 text-center">Contáctanos</h2>
+
+  <form id="formContacto" action="" method="POST" onsubmit="return validarContacto();">
+    {% csrf_token %}
+
+    <!-- ⚠️ Alerta visual -->
+    <div id="alertaContacto" class="alert alert-warning d-none" role="alert">
+      Por favor ingresa al menos un número de teléfono o un correo electrónico.
+    </div>
+
+    <!-- 🧍 Nombre (requerido) -->
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre completo</label>
+      <input type="text" class="form-control" id="nombre" name="nombre" required>
+    </div>
+
+    <!-- 📞 Teléfono -->
+    <div class="mb-3">
+      <label for="telefono" class="form-label">Número de teléfono</label>
+      <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="+ 48 000 000 000" pattern="^\+?\d{7,15}$">
+    </div>
+
+    <!-- 📧 Correo -->
+    <div class="mb-3">
+      <label for="correo" class="form-label">Correo electrónico</label>
+      <input type="email" class="form-control" id="correo" name="correo" placeholder="tucorreo@ejemplo.com">
+    </div>
+
+    <!-- 📝 Mensaje -->
+    <div class="mb-3">
+      <label for="mensaje" class="form-label">Mensaje</label>
+      <textarea class="form-control" id="mensaje" name="mensaje" rows="4" required placeholder="Escribe tu mensaje aquí..."></textarea>
+    </div>
+
+    <!-- Botón -->
+    <button type="submit" class="btn btn-success">Enviar mensaje</button>
+  </form>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+function validarContacto() {
+  const telefono = document.getElementById('telefono').value.trim();
+  const correo = document.getElementById('correo').value.trim();
+  const alerta = document.getElementById('alertaContacto');
+
+  if (telefono === "" && correo === "") {
+    alerta.classList.remove('d-none'); // Mostrar alerta si faltan ambos
+    return false;
+  }
+
+  alerta.classList.add('d-none'); // Ocultar alerta si se corrige
+  return true;
+}
+</script>
+{% endblock %}
