@@ -1,7 +1,8 @@
 from django.shortcuts import render 
 from django.http import HttpResponse
 from datetime import date
-
+import requests
+from django.shortcuts import render
 def hola(request):
         return render(request, 'inicio.html')
     
