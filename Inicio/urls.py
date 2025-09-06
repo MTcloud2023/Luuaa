@@ -11,7 +11,7 @@ urlpatterns = [
     #path('o-klubie/',views.acercade),
     path('tienda/', views.tienda, name='tienda'),
     #path('coming-soon/', views.comingsoon, name='coming_soon'),
-    #re_path(r'^.*$', lambda request: redirect('coming_soon')),
+    re_path(r'^.*$', lambda request: redirect('tienda')),
 
 
 ]
