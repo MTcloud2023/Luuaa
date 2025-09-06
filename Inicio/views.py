@@ -22,4 +22,13 @@ def contacto (request):
 
 def comingsoon(request):
     return render(request, 'coming_soon.html')
-    
+    import requests
+from django.shortcuts import render
+
+def tienda(request):
+    try:
+        response = requests.get('https://fakestoreapi.com/products?limit=12')
+        productos = response.json()
+    except:
+        productos = []
+    return render(request, 'tienda.html', {'productos': productos})
