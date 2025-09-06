@@ -9,8 +9,9 @@ urlpatterns = [
     #path('kontakt/',views.contacto),
     #path('rezerwacje/',views.reserva, name='reserva'),
     #path('o-klubie/',views.acercade),
-    path('coming-soon/', views.comingsoon, name='coming_soon'),
-    re_path(r'^.*$', lambda request: redirect('coming_soon')),
+    path('tienda/', views.tienda, name='tienda'),
+    #path('coming-soon/', views.comingsoon, name='coming_soon'),
+    #re_path(r'^.*$', lambda request: redirect('coming_soon')),
 
 
 ]
