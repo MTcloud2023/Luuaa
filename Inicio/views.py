@@ -26,10 +26,9 @@ def comingsoon(request):
 
 def tienda(request):
     try:
-        response = requests.get('https://fakestoreapi.com/products?limit=12', timeout=5)
-        print("API Status Code:", response.status_code)
-        print("API Response Text:", response.text[:500])  # Only print first 500 chars
-        productos = response.json()
+        url = "https://api.mercadolibre.com/sites/MLM/search?category=MLM1574&limit=12"
+        response = requests.get(url, timeout=5)
+        productos = response.json().get('results', [])
     except Exception as e:
         print("Error al consumir la API:", e)
         productos = []
