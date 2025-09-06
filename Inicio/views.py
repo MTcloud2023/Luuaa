@@ -27,6 +27,8 @@ def comingsoon(request):
 def tienda(request):
     try:
         response = requests.get('https://fakestoreapi.com/products?limit=12', timeout=5)
+        print("API Status Code:", response.status_code)
+        print("API Response Text:", response.text[:500])  # Only print first 500 chars
         productos = response.json()
     except Exception as e:
         print("Error al consumir la API:", e)
