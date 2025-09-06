@@ -26,10 +26,14 @@ def comingsoon(request):
     import requests
 from django.shortcuts import render
 
+import requests
+from django.shortcuts import render
+
 def tienda(request):
     try:
-        response = requests.get('https://fakestoreapi.com/products?limit=12')
+        response = requests.get('https://fakestoreapi.com/products?limit=12', timeout=5)
         productos = response.json()
-    except:
+    except Exception as e:
+        print("Error al consumir la API:", e)
         productos = []
     return render(request, 'tienda.html', {'productos': productos})
