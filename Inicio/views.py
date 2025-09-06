@@ -26,10 +26,18 @@ def comingsoon(request):
 
 def tienda(request):
     try:
-        url = "https://api.mercadolibre.com/sites/MLM/search?category=MLM1574&limit=12"
+        url = "https://dummyjson.com/products/category/womens-dresses"
         response = requests.get(url, timeout=5)
-        productos = response.json().get('results', [])
+        productos = response.json().get('products', [])
     except Exception as e:
         print("Error al consumir la API:", e)
         productos = []
-    return render(request, 'tienda.html', {'productos': productos})
+    # Adapt keys for your template
+    productos_adaptados = [
+        {
+            "title": p["title"],
+            "price": p["price"],
+            "image": p.get("thumbnail", ""),
+        } for p in productos
+    ]
+    return render(request, 'tienda.html', {'productos': productos_adaptados})
