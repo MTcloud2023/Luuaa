@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Tienda - Luuaa{% endblock %}
+
+{% block content %}
+<h2 class="text-center my-4">Novedades</h2>
+<div class="row">
+  {% for producto in productos %}
+  <div class="col-md-3 mb-4">
+    <div class="card h-100 border-0 shadow-sm">
+      <img src="{{ producto.image }}" class="card-img-top" alt="{{ producto.title }}" style="height: 250px; object-fit: cover;">
+      <div class="card-body text-center">
+        <h6 class="card-title">{{ producto.title|truncatechars:40 }}</h6>
+        <p class="fw-bold text-danger">${{ producto.price }}</p>
+        <a href="#" class="btn btn-outline-dark btn-sm">Ver más</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
