@@ -26,7 +26,7 @@ def comingsoon(request):
 
 def tienda(request):
     try:
-        response = request.get('https://fakestoreapi.com/products?limit=12', timeout=5)
+        response = requests.get('https://fakestoreapi.com/products?limit=12', timeout=5)
         productos = response.json()
     except Exception as e:
         print("Error al consumir la API:", e)
