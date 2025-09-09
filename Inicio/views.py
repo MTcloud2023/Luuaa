@@ -26,7 +26,7 @@ def comingsoon(request):
 
 def tienda(request):
     try:
-        url = "https://dummyjson.com/products/category/womens-dresses"
+        url = "https://dummyjson.com/products"
         response = requests.get(url, timeout=5)
         productos = response.json().get('products', [])
     except Exception as e:
